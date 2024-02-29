@@ -45,7 +45,7 @@ key_id = model.key(key_name).id
 mocap_name = "target"
 mocap_id = model.body(mocap_name).mocapid[0]
 
-controller = IK_controller(model, data, integration_dt, damping, velocity, site_id, max_delta, max_ang_vel, "DL")
+controller = IK_controller(model, data, integration_dt, damping, velocity, site_id, max_delta, max_ang_vel, "DLS")
 
 with mujoco.viewer.launch_passive(model=model, data=data, show_left_ui=False, show_right_ui=False) as viewer:
     mujoco.mj_resetDataKeyframe(model, data, key_id)
