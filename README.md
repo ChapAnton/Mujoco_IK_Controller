@@ -1,3 +1,2 @@
-## Differential Inverse Kinematics
-
-Implementations of Jacobian transpose and Damped Least Squares methods for differential IK, along with a control algorithm which uses a desired method to reach a target position in Mujoco
+## Дифференциальная инверсная кинематика 
+Реализация алгоритмов Jacobian transpose и Damped Least Squares для дифференциальной ИК вместе с алгоритмом движения по траектории концевого эффектора в симуляторе Mujoco
