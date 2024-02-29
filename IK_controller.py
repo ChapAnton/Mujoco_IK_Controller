@@ -70,8 +70,7 @@ class IK_controller():
             alpha = np.dot(self.twist, jjte) / np.dot(jjte, jjte)
             self.dq = alpha * self.jac.T  @ self.twist
         else:
-            print("Invalid mode!")
-            return
+            raise ("Invalid mode!")
 
         return self.dq
 
