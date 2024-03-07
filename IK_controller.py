@@ -48,8 +48,7 @@ class IK_controller():
         mujoco.mju_negQuat(self.site_quat_conj, self.site_quat)
         mujoco.mju_mulQuat(
             self.error_quat, self.data.mocap_quat[0], self.site_quat_conj)
-        mujoco.mju_quat2Vel(self.twist[3:], self.error_quat, 1.0)
-        self.twist[3:] /= self.integration_step
+        mujoco.mju_quat2Vel(self.twist[3:], self.error_quat, self.integration_step)
 
         return self.twist
 
@@ -64,7 +63,7 @@ class IK_controller():
 
         if self.mode == "DLS":
             self.dq = np.linalg.solve(
-                self.jac.T @ self.jac + self.damping ** 2 * np.eye(6), self.jac.T @ self.twist)
+                self.jac.T @ self.jac + self.damping ** 2 * np.eye(self.model.nv), self.jac.T @ self.twist)
         elif self.mode == "Transpose":
             jjte = self.jac @ self.jac.T @ self.twist
             alpha = np.dot(self.twist, jjte) / np.dot(jjte, jjte)
